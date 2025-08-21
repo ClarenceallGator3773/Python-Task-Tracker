@@ -31,7 +31,7 @@ def find_tasks(key,index):
   elif key in KEYS: 
     for task in tasks:
       if index.lower() == str(task[key] ).lower(): task_list.append(task)
-      elif index.lower() in str(task[key] ).lower() and key in KEYS[4:5]: task_list.append(task)
+      elif index.lower() in str(task[key] ).lower() and key.lower() in KEYS[4:5]: task_list.append(task)
       else: 
         print('This index does not exist')
         return 'NO KEY OR INDEX'
@@ -86,7 +86,10 @@ def update_task_status(id,status):
       tasks[tasks.index(task)] = new_task
   save_to_file(tasks)
 
-
+def list_tasks(key, index):
+  task_list = find_tasks(key, index)
+  for task in task_list:
+    print(task)
 
 command = sys.argv
 print(command)
@@ -96,6 +99,7 @@ match command[1].lower():
   case 'delete': delete_from_file( command[2],command[3] )
   case 'update': update_task_description( command[2],command[3] )
   case 'mark': update_task_status( command[2],command[3] )
+  case 'list': list_tasks( command[2],command[3] )
   case 'info': 
     print('\n Keys: id, title, description, status, time created, time last updated',
           '\n Special Key: spec | Special Index: all',
