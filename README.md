@@ -11,6 +11,7 @@ Features
 1. add, delete, update, and list tasks
 2. mark tasks
 3. add task to JSON File
+4. enter `python todolist.py info` for more details on functions
 
 Usage
 1. add task: `python todolist.py add "Buy Groceries" "at Walmart buy milk and eggs"`
